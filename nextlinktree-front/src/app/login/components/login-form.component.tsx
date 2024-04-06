@@ -18,8 +18,11 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
 import login from "../services/login.service";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function LoginFormComponent() {
+    const { toast } = useToast();
+    
     const loginForm = useForm<z.infer<typeof loginSchema>>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
@@ -29,7 +32,15 @@ export default function LoginFormComponent() {
 
     async function onSubmit(values: z.infer<typeof loginSchema>) {
         // TODO: Implementar lógica de cookie
-        console.log(await login(values.email, values.password));
+        try {
+            await login(values.email, values.password);
+        } catch (error) {
+            console.log(error);
+            toast({
+                description: "An error has ocurred, please try again later.",
+                variant: "destructive"
+            });
+        }
     }
 
     return (
@@ -49,7 +60,7 @@ export default function LoginFormComponent() {
                     <FormItem>
                         <FormLabel>Password</FormLabel>
                         <FormControl>
-                            <Input placeholder="secret" {...field}></Input>
+                            <Input type="password" placeholder="********" {...field}></Input>
                         </FormControl>
                         <FormMessage />
                     </FormItem>
