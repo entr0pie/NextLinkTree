@@ -8,7 +8,13 @@ import {
 } from "@/components/ui/card"
 
 import LoginFormComponent from "./components/login-form.component";
+import { Metadata } from "next";
 
+
+export const metadata: Metadata = {
+    title: "Login | NextLinkTree",
+    description: "Login into LinkTree",
+}
 
 export default function Login() {
 
