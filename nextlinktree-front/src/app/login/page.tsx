@@ -24,7 +24,7 @@ export default function Login() {
                 <Card className="w-[350px]">
                     <CardHeader>
                         <CardTitle>Login</CardTitle>
-                        <CardDescription>Not registered yet? <a href="/">Create a account.</a></CardDescription>
+                        <CardDescription>Not registered yet? <a href="/register">Create a account.</a></CardDescription>
                     </CardHeader>
                     <CardContent>
                         <LoginFormComponent></LoginFormComponent>
