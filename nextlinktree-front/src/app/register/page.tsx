@@ -7,6 +7,12 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import { RegisterFormComponent } from "./components/register-form.component";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Register | NextLinkTree",
+    description: "Create a new account into the LinkTree",
+}
 
 export default function Register() {
     return (
