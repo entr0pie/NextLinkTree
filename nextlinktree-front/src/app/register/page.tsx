@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card"
 import { RegisterFormComponent } from "./components/register-form.component";
 import { Metadata } from "next";
+import TextHackerEffectComponent from "@/components/custom/hacker-effect/TextHackerEffectComponent";
 
 export const metadata: Metadata = {
     title: "Register | NextLinkTree",
@@ -20,7 +21,7 @@ export default function Register() {
             <div className="m-auto">
                 <Card className="w-[350px]">
                     <CardHeader>
-                        <CardTitle>Create a Account</CardTitle>
+                        <CardTitle><TextHackerEffectComponent content="REGISTER"></TextHackerEffectComponent></CardTitle>
                         <CardDescription>Already registed? <a href="/login">Login.</a></CardDescription>
                     </CardHeader>
                     <CardContent>

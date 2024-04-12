@@ -9,6 +9,7 @@ import {
 
 import LoginFormComponent from "./components/login-form.component";
 import { Metadata } from "next";
+import TextHackerEffectComponent from "@/components/custom/hacker-effect/TextHackerEffectComponent";
 
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function Login() {
             <div className="m-auto">
                 <Card className="w-[350px]">
                     <CardHeader>
-                        <CardTitle>Login</CardTitle>
+                        <CardTitle><TextHackerEffectComponent content="LOGIN"></TextHackerEffectComponent></CardTitle>
                         <CardDescription>Not registered yet? <a href="/register">Create a account.</a></CardDescription>
                     </CardHeader>
                     <CardContent>
