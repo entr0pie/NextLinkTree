@@ -30,10 +30,6 @@ export function getPublicProfile(username: string): PublicProfile {
                 name: "Whatsapp",
                 link: "https://web.whatsapp.com/"
             },
-            {
-                name: "Onlyfans",
-                link: "https://onlyfans.com"
-            }
         ]
     }
 }

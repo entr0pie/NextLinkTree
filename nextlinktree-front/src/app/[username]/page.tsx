@@ -44,7 +44,7 @@ export default function PublicProfile({ params }: { params: { username: string }
                     <div>
                         <CardContent className="flex flex-col gap-2">
                             {profile.links.map((profileLink, index) => (
-                                <Card className="w-[300px] text-center p-2 relative">
+                                <Card className="w-[300px] text-center p-2 relative bg-neutral-800 hover:bg-neutral-900">
                                     <Link target="_blank" href={profileLink.link}>{profileLink.name}</Link>
                                     <EditIcon showState={editMode} linkState={() => handleEditLinkClick(false)}></EditIcon>
                                 </Card>
@@ -59,7 +59,7 @@ export default function PublicProfile({ params }: { params: { username: string }
                     <EditButton></EditButton>
                 </div>
 
-                <div className={`flex h-screen w-screen absolute bg-black ${isActive ? 'invisible' : 'visible'}`}>
+                <div className={`flex h-screen w-screen absolute bg-[rgba(0,0,0,0.7)] ${isActive ? 'invisible' : 'visible'}`}>
                   <EditLinks onCalcel={() => handleEditLinkClick(true)}></EditLinks>
                 </div>
         </div>
