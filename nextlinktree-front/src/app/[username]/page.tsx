@@ -14,7 +14,7 @@ export default function PublicProfile({ params }: { params: { username: string }
     const profile = getPublicProfile(params.username);
     const [editMode, setEditMode] = useState(false);
     const [isActive, setIsActive] = useState(false);
-
+    
     const handleEditMode = () => {
          setEditMode(!editMode);
     }
@@ -46,7 +46,7 @@ export default function PublicProfile({ params }: { params: { username: string }
                             {profile.links.map((profileLink, index) => (
                                 <Card className="w-[300px] text-center p-2 relative bg-neutral-800 hover:bg-neutral-900">
                                     <Link target="_blank" href={profileLink.link}>{profileLink.name}</Link>
-                                    <EditIcon showState={editMode} linkState={() => handleEditLinkClick(false)}></EditIcon>
+                                    <EditIcon showState={editMode} linkState={() => handleEditLinkClick()}></EditIcon>
                                 </Card>
                             ))}
                         </CardContent>
@@ -59,8 +59,8 @@ export default function PublicProfile({ params }: { params: { username: string }
                     <EditButton></EditButton>
                 </div>
 
-                <div className={`flex h-screen w-screen absolute bg-[rgba(0,0,0,0.7)] ${isActive ? 'invisible' : 'visible'}`}>
-                  <EditLinks onCalcel={() => handleEditLinkClick(true)}></EditLinks>
+                <div className={`flex h-screen w-screen absolute bg-[rgba(0,0,0,0.7)] ${!isActive ? 'invisible' : 'visible'}`}>
+                  <EditLinks onCalcel={() => handleEditLinkClick()}></EditLinks>
                 </div>
         </div>
     

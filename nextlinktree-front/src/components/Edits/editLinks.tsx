@@ -2,11 +2,16 @@ import React from "react";
 import { getPublicProfile } from '../../app/[username]/services/PublicProfileService';
 
 
-
 interface EditLinkProps {
     onCalcel: () => void
 }
+
 const EditLinks: React.FC<EditLinkProps> = ({onCalcel}) => {
+
+    function addLinks() {
+        
+    }
+
     return (
         <div className="m-auto">
             <div className="bg-gray-900 p-[85px] rounded-md flex flex-col gap-5 ">
