@@ -14,6 +14,7 @@ import editButton from './components/editLinks/editButton';
 import EditButton from "./components/editLinks/editButton";
 import { useState } from "react";
 import { FaPen } from "react-icons/fa";
+import ScreenEditLinks from './components/editLinks/screenEditLinks';
 
 export default function Account() {
     
@@ -21,12 +22,15 @@ export default function Account() {
     const username = useProfileStore((state) => state.username); // getPublicProfile('Example Username');
     const biography = useProfileStore((state) => state.biography);
 
-    const [isActive, setActive] = useState(false);
+    const [isPenVisible, setPenVisible] = useState(false);
+    const [isActive, setIsActive] = useState(false);
 
-    function active() {
-        if (!isActive) {
-            setActive(true);
-        }
+    const togglePenVisibility = () => {
+        setPenVisible(!isPenVisible);
+    };
+
+    const handleEditLinkClick = () => {
+        return setIsActive(!isActive);
     }
 
     return (
@@ -42,7 +46,7 @@ export default function Account() {
                                     // eslint-disable-next-line react/jsx-key
                                 <Card className="w-[300px] text-center p-2 flex justify-between items-center">
                                     <Link target="_blank" href={profileLink.link}>{profileLink.name}</Link>
-                                    <FaPen className={`mr-[10px]`}/>
+                                    {isPenVisible && <FaPen className={`mr-[10px]`} onClick={handleEditLinkClick}/>}
                                 </Card>
                             ))}
                         </CardContent>
@@ -50,9 +54,13 @@ export default function Account() {
                     </Card> 
                 </div>
             </div>
-
-            <EditButton></EditButton>
+            
+            <EditButton onClick={togglePenVisibility}></EditButton>
             <SettingsSectionComponent></SettingsSectionComponent>
+
+            <div className={`flex h-screen w-screen absolute bg-[rgba(0,0,0,0.7)]`}>
+                {isActive && <ScreenEditLinks onCalcel={handleEditLinkClick}></ScreenEditLinks>}
+            </div>        
         </div>
     );
 

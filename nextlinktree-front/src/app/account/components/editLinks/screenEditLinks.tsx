@@ -5,7 +5,7 @@ interface EditLinkProps {
     onCalcel: () => void
 }
 
-const EditLinks: React.FC<EditLinkProps> = ({onCalcel}) => {
+const ScreenEditLinks: React.FC<EditLinkProps> = ({onCalcel}) => {
 
     return (
         <div className="m-auto">
@@ -30,4 +30,4 @@ const EditLinks: React.FC<EditLinkProps> = ({onCalcel}) => {
     )
 }
 
-export default EditLinks;
+export default ScreenEditLinks;
