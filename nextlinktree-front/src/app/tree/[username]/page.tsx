@@ -4,7 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Link from "next/link";
 import { getPublicProfile } from "./services/PublicProfileService";
-import { useProfileStore } from "@/app/account/components/ProfileStore"; 
 
 export default function PublicProfile({ params }: { params: { username: string } }) {
 

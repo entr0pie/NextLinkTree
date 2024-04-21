@@ -1,12 +1,8 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
-import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
-import { GearIcon, PersonIcon } from "@radix-ui/react-icons";
-import { useProfileStore } from "../ProfileStore";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { updateProfileSchema } from "../updateProfileSchema";
+import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
+import { PersonIcon } from "@radix-ui/react-icons";
 import UpdateProfileFormComponent from "./UpdateProfileFormComponent";
 
 export default function SettingsSectionComponent() {
@@ -25,7 +21,7 @@ export default function SettingsSectionComponent() {
                 <DrawerTitle>Update your profile</DrawerTitle>
                 <DrawerDescription>Got bored? Let&apos;s change up some things.</DrawerDescription>
                 </DrawerHeader>
-                <UpdateProfileFormComponent></UpdateProfileFormComponent>
+                    <UpdateProfileFormComponent></UpdateProfileFormComponent>
                 <DrawerFooter>
                 </DrawerFooter>
             </DrawerContent>

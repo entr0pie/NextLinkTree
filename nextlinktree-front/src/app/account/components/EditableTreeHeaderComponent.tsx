@@ -1,4 +1,4 @@
-import { PublicProfile } from "@/app/linktree/services/PublicProfileService";
+import { PublicProfile } from "@/app/tree/[username]/services/PublicProfileService";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";

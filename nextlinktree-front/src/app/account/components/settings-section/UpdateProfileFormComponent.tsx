@@ -16,10 +16,12 @@ import { Button } from "@/components/ui/button";
 import { DrawerClose } from "@/components/ui/drawer";
 
 export default function UpdateProfileFormComponent() {
+  
   const [username, setUsername] = useProfileStore((state) => [
     state.username,
     state.setUsername,
   ]);
+  
   const [biography, setBiography] = useProfileStore((state) => [
     state.biography,
     state.setBiography,

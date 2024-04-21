@@ -1,4 +1,3 @@
-import { getPublicProfile } from "@/app/tree/[username]/services/PublicProfileService";
 import { create } from "zustand";
 
 export interface ProfileState {
