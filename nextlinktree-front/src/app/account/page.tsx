@@ -1,20 +1,15 @@
 "use client";
 
-import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar } from "@radix-ui/react-avatar";
-import { getPublicProfile } from "../tree/[username]/services/PublicProfileService";
-import { Link } from "lucide-react";
-import EditableTreeHeaderComponent from "./components/EditableTreeHeaderComponent";
-import { Button } from "@/components/ui/button";
-import { GearIcon, Pencil1Icon } from "@radix-ui/react-icons";
-import SettingsSectionComponent from "./components/settings-section/SettingsSectionComponent";
-import { useProfileStore } from "./components/ProfileStore";
-import editButton from './components/editLinks/editButton';
-import EditButton from "./components/editLinks/editButton";
+import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 import { useState } from "react";
 import { FaPen } from "react-icons/fa";
+import { getPublicProfile } from "../tree/[username]/services/PublicProfileService";
+import EditableTreeHeaderComponent from "./components/EditableTreeHeaderComponent";
+import { useProfileStore } from "./components/ProfileStore";
+import EditButton from "./components/editLinks/editButton";
 import ScreenEditLinks from './components/editLinks/screenEditLinks';
+import SettingsSectionComponent from "./components/settings-section/SettingsSectionComponent";
 
 export default function Account() {
     
