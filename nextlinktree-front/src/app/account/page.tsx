@@ -3,7 +3,7 @@
 import { AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar } from "@radix-ui/react-avatar";
-import { getPublicProfile } from "../linktree/services/PublicProfileService";
+import { getPublicProfile } from "../tree/[username]/services/PublicProfileService";
 import { Link } from "lucide-react";
 import EditableTreeHeaderComponent from "./components/EditableTreeHeaderComponent";
 import { Button } from "@/components/ui/button";
