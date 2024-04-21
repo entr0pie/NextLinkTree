@@ -1,3 +1,4 @@
+import { useProfileStore } from "@/app/account/components/ProfileStore";
 
 
 export interface PublicProfile {
@@ -11,6 +12,8 @@ export interface PublicProfileLinks {
     name: string;
     link: string;
 }
+
+
 
 export function getPublicProfile(username: string): PublicProfile {
     return {
@@ -30,10 +33,7 @@ export function getPublicProfile(username: string): PublicProfile {
                 name: "Whatsapp",
                 link: "https://web.whatsapp.com/"
             },
-            {
-                name: "Onlyfans",
-                link: "https://onlyfans.com"
-            }
+           
         ]
     }
 }

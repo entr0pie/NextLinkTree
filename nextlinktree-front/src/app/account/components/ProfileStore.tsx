@@ -1,4 +1,4 @@
-import { getPublicProfile } from "@/app/[username]/services/PublicProfileService";
+import { getPublicProfile } from "@/app/linktree/services/PublicProfileService";
 import { create } from "zustand";
 
 export interface ProfileState {

@@ -4,10 +4,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Link from "next/link";
 import { getPublicProfile } from "./services/PublicProfileService";
+import { useProfileStore, ProfileState } from '../account/components/ProfileStore';
 
 export default function PublicProfile({ params }: { params: { username: string } }) {
 
     const profile = getPublicProfile(params.username);
+
 
     return (
         <div className="flex h-screen">
@@ -22,14 +24,17 @@ export default function PublicProfile({ params }: { params: { username: string }
                         </div>
                         
                         <CardHeader className="text-center">
-                            <CardTitle>{profile.username}</CardTitle>
-                            <CardDescription>{profile.description}</CardDescription>
+                            <CardTitle>{ profile.username }</CardTitle>
+                            <CardDescription>{ profile.description }</CardDescription>
                         </CardHeader>
                     </div>
                     <div>
                         <CardContent className="flex flex-col gap-2">
                             {profile.links.map((profileLink, index) => (
-                                <Card className="w-[300px] text-center p-2"><Link target="_blank" href={profileLink.link}>{profileLink.name}</Link></Card>
+                                    // eslint-disable-next-line react/jsx-key
+                                <Card className="w-[300px] text-center p-2">
+                                    <Link target="_blank" href={profileLink.link}>{profileLink.name}</Link>
+                                </Card>
                             ))}
                         </CardContent>
                     </div>
