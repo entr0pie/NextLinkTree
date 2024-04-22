@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function TextHackerEffectComponent({ content }: { content: string } ) {
+export default function HackerEffectText({ content }: { content: string } ) {
 
     const timebox = 30;
     const iterations_per_shift = 5;

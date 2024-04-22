@@ -3,24 +3,23 @@
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
-    FormMessage,
-  } from "@/components/ui/form"
+    FormMessage
+} from "@/components/ui/form";
 
 import { Input } from "@/components/ui/input";
 
-import { loginSchema } from "./login.schema";
+import { Button } from "@/components/ui/button";
+import { useToast } from "@/components/ui/use-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/components/ui/button";
 import login from "../services/login.service";
-import { useToast } from "@/components/ui/use-toast";
+import { loginSchema } from "./loginSchema";
 
-export default function LoginFormComponent() {
+export default function LoginForm() {
     const { toast } = useToast();
     
     const loginForm = useForm<z.infer<typeof loginSchema>>({

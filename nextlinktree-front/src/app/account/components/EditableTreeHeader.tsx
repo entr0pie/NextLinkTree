@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Pencil1Icon } from "@radix-ui/react-icons"
 
-export default function EditableTreeHeaderComponent(profile: PublicProfile) {
+export default function EditableTreeHeader(profile: PublicProfile) {
     return (    
         <div className="pt-5">
             <div className="flex justify-center">

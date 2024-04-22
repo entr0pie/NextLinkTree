@@ -1,5 +1,3 @@
-import { useProfileStore } from "@/app/account/components/ProfileStore";
-
 export interface PublicProfile {
   username: string;
   imageURL: string;

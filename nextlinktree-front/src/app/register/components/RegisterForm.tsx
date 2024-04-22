@@ -1,26 +1,24 @@
 "use client"
 
-
+import { Button } from "@/components/ui/button";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
-    FormMessage,
-  } from "@/components/ui/form"
+    FormMessage
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { registerSchema } from "./register.schema";
 import { z } from "zod";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import register from "../services/register.service";
+import { registerSchema } from "./registerSchema";
 
 
-export function RegisterFormComponent() {
+export function RegisterForm() {
     const { toast } = useToast();
     
     const registerForm = useForm<z.infer<typeof registerSchema>>({
@@ -34,10 +32,8 @@ export function RegisterFormComponent() {
     });
 
     async function onSubmit(values: z.infer<typeof registerSchema>) {
-        // TODO: Implementar lógica de cookie
         try {
             await register(values.name, values.email, values.password);
-            // await login(values.email, values.password);
         } catch (error) {
             console.log(error);
             toast({

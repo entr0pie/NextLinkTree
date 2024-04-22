@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { DrawerClose } from "@/components/ui/drawer";
 
-export default function UpdateProfileFormComponent() {
+export default function UpdateProfileForm() {
   
   const [username, setUsername] = useProfileStore((state) => [
     state.username,
@@ -36,9 +36,6 @@ export default function UpdateProfileFormComponent() {
   });
 
   async function onSubmit(values: z.infer<typeof updateProfileSchema>) {
-    console.error(values.username);
-    console.error(values.biography);
-
     setUsername(values.username);
     setBiography(values.biography);
   }

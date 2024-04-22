@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-import { PiLinkSimpleBold } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
-import { FaSave } from "react-icons/fa";
+import { PiLinkSimpleBold } from "react-icons/pi";
 
 interface Props {
     onClick: () => void,
 }
 
-export default function EditButton({onClick}: Props) {
+export default function EditButton({ onClick }: Props) {
     return (
         <div className="absolute left-4 bottom-24">
              <Button className="h-16 w-16 rounded-xl sticky" variant="outline" size="icon" onClick={onClick}>

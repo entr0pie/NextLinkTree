@@ -5,16 +5,16 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaPen } from "react-icons/fa";
 import { getPublicProfile } from "../tree/[username]/services/PublicProfileService";
-import EditableTreeHeaderComponent from "./components/EditableTreeHeaderComponent";
+import EditableTreeHeader from "./components/EditableTreeHeader";
 import { useProfileStore } from "./components/ProfileStore";
-import EditButton from "./components/editLinks/editButton";
-import ScreenEditLinks from './components/editLinks/screenEditLinks';
-import SettingsSectionComponent from "./components/settings-section/SettingsSectionComponent";
+import EditButton from "./components/edit-links/EditButton";
+import ScreenEditLinks from './components/edit-links/ScreenEditLinks';
+import SettingsSection from "./components/settings-section/SettingsSection";
 
 export default function Account() {
     
     const profile = getPublicProfile("kauan");
-    const username = useProfileStore((state) => state.username); // getPublicProfile('Example Username');
+    const username = useProfileStore((state) => state.username);
     const biography = useProfileStore((state) => state.biography);
 
     const [isPenVisible, setPenVisible] = useState(false);
@@ -33,8 +33,8 @@ export default function Account() {
             <div className="flex h-screen">
                 <div className="m-auto">
                     <Card className="w-[350px] text-center">
-                        <EditableTreeHeaderComponent description={biography} username={username} imageURL={profile.imageURL} links={profile.links}>
-                        </EditableTreeHeaderComponent>
+                        <EditableTreeHeader description={biography} username={username} imageURL={profile.imageURL} links={profile.links}>
+                        </EditableTreeHeader>
                         <div>
                         <CardContent className="flex flex-col gap-2">
                             {profile.links.map((profileLink, index) => (
@@ -49,7 +49,7 @@ export default function Account() {
                     </Card> 
                 </div>
                 <EditButton onClick={togglePenVisibility}></EditButton>
-                <SettingsSectionComponent></SettingsSectionComponent>
+                <SettingsSection></SettingsSection>
             </div>
             
 
