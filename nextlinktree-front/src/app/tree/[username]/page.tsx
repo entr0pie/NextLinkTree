@@ -30,7 +30,7 @@ export default function PublicProfile({ params }: { params: { username: string }
                         <CardContent className="flex flex-col gap-2">
                             {profile.links.map((profileLink, index) => (
                                 <Card key={index} className="w-[300px] text-center p-2 cursor-pointer" onClick={() => window.open(profileLink.link)}>
-                                    <Link target="_blank" href={profileLink.link}>{profileLink.name}</Link>
+                                    {profileLink.name}
                                 </Card>
                             ))}
                         </CardContent>
