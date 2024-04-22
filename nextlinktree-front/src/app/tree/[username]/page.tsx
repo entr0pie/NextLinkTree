@@ -29,8 +29,7 @@ export default function PublicProfile({ params }: { params: { username: string }
                     <div>
                         <CardContent className="flex flex-col gap-2">
                             {profile.links.map((profileLink, index) => (
-                                    // eslint-disable-next-line react/jsx-key
-                                <Card className="w-[300px] text-center p-2">
+                                <Card key={index} className="w-[300px] text-center p-2 cursor-pointer" onClick={() => window.open(profileLink.link)}>
                                     <Link target="_blank" href={profileLink.link}>{profileLink.name}</Link>
                                 </Card>
                             ))}
