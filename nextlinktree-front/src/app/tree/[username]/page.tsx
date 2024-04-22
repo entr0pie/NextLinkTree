@@ -14,7 +14,7 @@ export default function PublicProfile({ params }: { params: { username: string }
             <div className="m-auto">
                 <Card className="w-[350px] text-center">
                     <div className="pt-5">
-             k           <div className="flex justify-center">
+                        <div className="flex justify-center">
                             <Avatar className="text-center">
                                 <AvatarImage className="h-20 w-20 rounded-full" src={profile.imageURL} alt="@shadcn" />
                                 <AvatarFallback>{profile.username}</AvatarFallback>

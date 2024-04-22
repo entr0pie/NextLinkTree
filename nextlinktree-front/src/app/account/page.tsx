@@ -39,21 +39,21 @@ export default function Account() {
                         <CardContent className="flex flex-col gap-2">
                             {profile.links.map((profileLink, index) => (
                                     // eslint-disable-next-line react/jsx-key
-                                <Card className="w-[300px] text-center p-2 flex justify-between items-center">
+                                <Card className="w-[300px] text-center p-2 relative">
                                     <Link target="_blank" href={profileLink.link}>{profileLink.name}</Link>
-                                    {isPenVisible && <FaPen className={`mr-[10px]`} onClick={handleEditLinkClick}/>}
+                                    {isPenVisible && <FaPen className={`mr-[10px] absolute right-2 bottom-3`} onClick={handleEditLinkClick}/>}
                                 </Card>
                             ))}
                         </CardContent>
                         </div>
                     </Card> 
                 </div>
+                <EditButton onClick={togglePenVisibility}></EditButton>
+                <SettingsSectionComponent></SettingsSectionComponent>
             </div>
             
-            <EditButton onClick={togglePenVisibility}></EditButton>
-            <SettingsSectionComponent></SettingsSectionComponent>
 
-            <div className={`flex h-screen w-screen absolute bg-[rgba(0,0,0,0.7)]`}>
+            <div className={`flex h-screen w-screen absolute bg-[rgba(0,0,0,0.7)] top-0 ${!isActive ? 'hidden' : 'visible'}`}>
                 {isActive && <ScreenEditLinks onCalcel={handleEditLinkClick}></ScreenEditLinks>}
             </div>        
         </div>
