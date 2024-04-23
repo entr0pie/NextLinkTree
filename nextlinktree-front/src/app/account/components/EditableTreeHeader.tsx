@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Pencil1Icon } from "@radix-ui/react-icons"
 
+// https://ui.shadcn.com/docs/components/avatar
+// https://ui.shadcn.com/docs/components/card
+// https://ui.shadcn.com/docs/components/button
 export default function EditableTreeHeader(profile: PublicProfile) {
     return (    
         <div className="pt-5">

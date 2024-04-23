@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import Link from "next/link";
 import { getPublicProfile } from "./services/PublicProfileService";
 
+// https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes
 export default function PublicProfile({ params }: { params: { username: string } }) {
 
     const profile = getPublicProfile(params.username);

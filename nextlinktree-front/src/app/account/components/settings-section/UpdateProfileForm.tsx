@@ -15,6 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { DrawerClose } from "@/components/ui/drawer";
 
+// https://ui.shadcn.com/docs/components/form
+// https://ui.shadcn.com/docs/components/drawer
 export default function UpdateProfileForm() {
   
   const [username, setUsername] = useProfileStore((state) => [

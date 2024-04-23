@@ -5,6 +5,7 @@ interface Props {
     onClick: () => void,
 }
 
+// https://ui.shadcn.com/docs/components/button
 export default function EditButton({ onClick }: Props) {
     return (
         <div className="absolute left-4 bottom-24">

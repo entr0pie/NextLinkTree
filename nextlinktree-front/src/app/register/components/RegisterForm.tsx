@@ -17,7 +17,8 @@ import { z } from "zod";
 import register from "../services/register.service";
 import { registerSchema } from "./registerSchema";
 
-
+// https://ui.shadcn.com/docs/components/form
+// https://ui.shadcn.com/docs/components/toast
 export function RegisterForm() {
     const { toast } = useToast();
     

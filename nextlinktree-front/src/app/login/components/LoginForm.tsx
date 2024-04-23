@@ -19,6 +19,8 @@ import { z } from "zod";
 import login from "../services/login.service";
 import { loginSchema } from "./loginSchema";
 
+// https://ui.shadcn.com/docs/components/form
+// https://ui.shadcn.com/docs/components/toast
 export default function LoginForm() {
     const { toast } = useToast();
     
@@ -26,6 +28,7 @@ export default function LoginForm() {
         resolver: zodResolver(loginSchema),
         defaultValues: {
             email: "",
+            password: ""
         },
     });
 

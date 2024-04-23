@@ -5,8 +5,9 @@ import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, D
 import { PersonIcon } from "@radix-ui/react-icons";
 import UpdateProfileForm from "./UpdateProfileForm";
 
+// https://ui.shadcn.com/docs/components/drawer
+// https://ui.shadcn.com/docs/components/button
 export default function SettingsSection() {
-
     return (
         <Drawer>
             <div className="absolute left-4 bottom-4">
