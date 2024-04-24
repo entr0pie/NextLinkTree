@@ -22,7 +22,7 @@ import { loginSchema } from "./loginSchema";
 // https://ui.shadcn.com/docs/components/form
 // https://ui.shadcn.com/docs/components/toast
 export default function LoginForm() {
-    const { toast } = useToast();
+    const { toast } = useToast();// Aqui é onde é usado um hook
     
     const loginForm = useForm<z.infer<typeof loginSchema>>({
         resolver: zodResolver(loginSchema),
