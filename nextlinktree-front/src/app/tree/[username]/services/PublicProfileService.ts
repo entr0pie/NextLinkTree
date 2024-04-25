@@ -13,7 +13,7 @@ export interface PublicProfileLinks {
 export function getPublicProfile(username: string): PublicProfile {
   return {
     username: username,
-    description: "Minha biografia muito boa",
+    description: "Minha biografia",
     imageURL: "https://github.com/shadcn.png",
     links: [
       {
