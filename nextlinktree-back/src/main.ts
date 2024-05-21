@@ -7,16 +7,23 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('NextLinkTree')
+    .setDescription('The API for your social network!')
     .setVersion('1.0')
-    .addTag('cats')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);
 
   const configService = app.get(ConfigService);
+
+  app.enableCors({
+    origin: configService.get('ALLOWED_ORIGIN'),
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  });
+
   await app.listen(configService.get('PORT'));
 }
 bootstrap();
