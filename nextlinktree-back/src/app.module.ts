@@ -10,6 +10,7 @@ import { SchemasModule } from './schemas/schemas.module';
     imports: [ConfigModule],
     useFactory: async (configService: ConfigService) => ({
       uri: configService.get<string>('DATABASE_CONNECTION_URL'),
+      autoCreate: true,
     }),
     inject: [ConfigService],
   }), SchemasModule],
