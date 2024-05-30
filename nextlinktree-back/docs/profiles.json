@@ -1,0 +1,35 @@
+[
+    {
+        "_id": {
+            "$oid": "60d5f0f5f8d2b903c8fa3b70"
+        },
+        "username": "user1",
+        "fullName": "User One",
+        "biography": "Biography of User One",
+        "account": {
+            "$oid": "60d5ecf5f8d2b903c8fa3b6b"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "60d5f0f5f8d2b903c8fa3b71"
+        },
+        "username": "user2",
+        "fullName": "User Two",
+        "biography": "Biography of User Two",
+        "account": {
+            "$oid": "60d5ecf5f8d2b903c8fa3b6c"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "60d5f0f5f8d2b903c8fa3b72"
+        },
+        "username": "user3",
+        "fullName": "User Three",
+        "biography": "Biography of User Three",
+        "account": {
+            "$oid": "60d5ecf5f8d2b903c8fa3b6d"
+        }
+    }
+]

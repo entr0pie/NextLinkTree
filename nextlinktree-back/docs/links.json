@@ -1,0 +1,62 @@
+[
+    {
+        "_id": {
+            "$oid": "60d5f2f5f8d2b903c8fa3b73"
+        },
+        "alias": "Google",
+        "link": "https://www.google.com",
+        "profile": {
+            "$oid": "60d5f0f5f8d2b903c8fa3b70"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "60d5f2f5f8d2b903c8fa3b74"
+        },
+        "alias": "Facebook",
+        "link": "https://www.facebook.com",
+        "profile": {
+            "$oid": "60d5f0f5f8d2b903c8fa3b71"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "60d5f2f5f8d2b903c8fa3b75"
+        },
+        "alias": "Twitter",
+        "link": "https://www.twitter.com",
+        "profile": {
+            "$oid": "60d5f0f5f8d2b903c8fa3b72"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "60d5f2f5f8d2b903c8fa3b76"
+        },
+        "alias": "Facebook",
+        "link": "https://www.facebook.com",
+        "profile": {
+            "$oid": "60d5f0f5f8d2b903c8fa3b70"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "60d5f2f5f8d2b903c8fa3b77"
+        },
+        "alias": "LinkedIn",
+        "link": "https://www.linkedin.com",
+        "profile": {
+            "$oid": "60d5f0f5f8d2b903c8fa3b71"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "60d5f2f5f8d2b903c8fa3b78"
+        },
+        "alias": "YouTube",
+        "link": "https://www.youtube.com",
+        "profile": {
+            "$oid": "60d5f0f5f8d2b903c8fa3b72"
+        }
+    }
+]
