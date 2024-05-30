@@ -1,0 +1,128 @@
+{
+    "accounts": [
+        {
+            "_id": {
+                "$oid": "60d5ecf5f8d2b903c8fa3b6b"
+            },
+            "email": "user1@example.com",
+            "password": "password123"
+        },
+        {
+            "_id": {
+                "$oid": "60d5ecf5f8d2b903c8fa3b6c"
+            },
+            "email": "user2@example.com",
+            "password": "password456"
+        },
+        {
+            "_id": {
+                "$oid": "60d5ecf5f8d2b903c8fa3b6d"
+            },
+            "email": "user3@example.com",
+            "password": "password789"
+        }
+    ],
+    "profiles": [
+        {
+            "_id": {
+                "$oid": "60d5f0f5f8d2b903c8fa3b70"
+            },
+            "username": "user1",
+            "fullName": "User One",
+            "biography": "Biography of User One",
+            "account": {
+                "$oid": "60d5ecf5f8d2b903c8fa3b6b"
+            }
+        },
+        {
+            "_id": {
+                "$oid": "60d5f0f5f8d2b903c8fa3b71"
+            },
+            "username": "user2",
+            "fullName": "User Two",
+            "biography": "Biography of User Two",
+            "account": {
+                "$oid": "60d5ecf5f8d2b903c8fa3b6c"
+            }
+        },
+        {
+            "_id": {
+                "$oid": "60d5f0f5f8d2b903c8fa3b72"
+            },
+            "username": "user3",
+            "fullName": "User Three",
+            "biography": "Biography of User Three",
+            "account": {
+                "$oid": "60d5ecf5f8d2b903c8fa3b6d"
+            }
+        }
+    ],
+    "links": [
+        {
+            "_id": {
+                "$oid": "60d5f2f5f8d2b903c8fa3b73"
+            },
+            "title": "Google",
+            "url": "https://www.google.com",
+            "description": "Search engine",
+            "profile": {
+                "$oid": "60d5f0f5f8d2b903c8fa3b70"
+            }
+        },
+        {
+            "_id": {
+                "$oid": "60d5f2f5f8d2b903c8fa3b74"
+            },
+            "title": "Facebook",
+            "url": "https://www.facebook.com",
+            "description": "Social media",
+            "profile": {
+                "$oid": "60d5f0f5f8d2b903c8fa3b71"
+            }
+        },
+        {
+            "_id": {
+                "$oid": "60d5f2f5f8d2b903c8fa3b75"
+            },
+            "title": "Twitter",
+            "url": "https://www.twitter.com",
+            "description": "Social media",
+            "profile": {
+                "$oid": "60d5f0f5f8d2b903c8fa3b72"
+            }
+        },
+        {
+            "_id": {
+                "$oid": "60d5f2f5f8d2b903c8fa3b76"
+            },
+            "title": "Instagram",
+            "url": "https://www.instagram.com",
+            "description": "Social media",
+            "profile": {
+                "$oid": "60d5f0f5f8d2b903c8fa3b70"
+            }
+        },
+        {
+            "_id": {
+                "$oid": "60d5f2f5f8d2b903c8fa3b77"
+            },
+            "title": "LinkedIn",
+            "url": "https://www.linkedin.com",
+            "description": "Social media",
+            "profile": {
+                "$oid": "60d5f0f5f8d2b903c8fa3b71"
+            }
+        },
+        {
+            "_id": {
+                "$oid": "60d5f2f5f8d2b903c8fa3b78"
+            },
+            "title": "YouTube",
+            "url": "https://www.youtube.com",
+            "description": "Video sharing",
+            "profile": {
+                "$oid": "60d5f0f5f8d2b903c8fa3b72"
+            }
+        }
+    ]
+}
