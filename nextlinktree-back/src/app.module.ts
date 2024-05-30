@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SchemasModule } from './schemas/schemas.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [ConfigModule.forRoot(), MongooseModule.forRootAsync({
@@ -13,7 +14,7 @@ import { SchemasModule } from './schemas/schemas.module';
       autoCreate: true,
     }),
     inject: [ConfigService],
-  }), SchemasModule],
+  }), SchemasModule, DashboardModule],
   controllers: [AppController],
   providers: [AppService],
 })
