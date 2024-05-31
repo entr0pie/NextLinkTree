@@ -129,7 +129,6 @@ export class DashboardService {
                 });
             }
 
-            this.LOGGER.log(`Found ${domainsUsage.length} domains`);
             return domainsUsage;
         }
 
