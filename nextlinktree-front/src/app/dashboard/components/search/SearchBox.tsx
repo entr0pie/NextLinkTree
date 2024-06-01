@@ -57,7 +57,7 @@ export default function SearchBox() {
     }
 
     return (
-        <div className="flex flex-col space-y-5 p-8 m-4 w-full">
+        <div className="flex flex-col space-y-5 p-4 w-full">
             <Card className="w-full">
                 <CardHeader>
                     <CardTitle>Search everything.</CardTitle>
