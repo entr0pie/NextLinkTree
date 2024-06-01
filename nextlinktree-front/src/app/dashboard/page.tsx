@@ -1,4 +1,4 @@
-import SearchBox from "./search/SearchBox";
+import SearchBox from "./components/search/SearchBox";
 
 export default function Dashboard() {
     return (
