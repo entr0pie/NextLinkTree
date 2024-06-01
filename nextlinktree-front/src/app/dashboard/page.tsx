@@ -1,5 +1,6 @@
 import DomainUsage from "./components/domain-usage/DomainUsage";
 import SearchBox from "./components/search/SearchBox";
+import UserCount from "./components/user-count/UserCount";
 
 export default function Dashboard() {
     return (
@@ -13,10 +14,9 @@ export default function Dashboard() {
                     <DomainUsage />
                 </div>
                 <div className="w-full md:w-1/2 justify-center items-center">
-                    <SearchBox />
+                    <UserCount />
                 </div>
             </div>
         </div>
-
     );
 }
