@@ -86,8 +86,17 @@ export class DashboardService {
             publicProfiles.push(publicProfile);
         }
 
-        this.LOGGER.log(`Found ${publicProfiles.length} profiles and links with keyword: ${keyword}`);
-        return publicProfiles;
+        // Remove duplicate profiles
+        const uniqueProfiles = publicProfiles.reduce((unique, profile) => {
+            const existingProfile = unique.find(p => p.username === profile.username);
+            if (!existingProfile) {
+                unique.push(profile);
+            }
+            return unique;
+        }, []);
+
+        return uniqueProfiles;
+
     }
 
     /**
