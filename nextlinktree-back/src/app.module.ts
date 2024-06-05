@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SchemasModule } from './schemas/schemas.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { PublicProfileModule } from './public-profile/public-profile.module';
 
 @Module({
   imports: [ConfigModule.forRoot(), MongooseModule.forRootAsync({
@@ -14,7 +15,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
       autoCreate: true,
     }),
     inject: [ConfigService],
-  }), SchemasModule, DashboardModule],
+  }), SchemasModule, DashboardModule, PublicProfileModule],
   controllers: [AppController],
   providers: [AppService],
 })
