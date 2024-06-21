@@ -35,68 +35,57 @@ export class DashboardService {
      * 
      * @param keyword keyword for searching.
      * @returns a list of public profiles that match the keyword.
+     * 
+     * @link https://mongoosejs.com/docs/populate.html#deep-populate
      */
     async search(keyword: string): Promise<PublicProfile[]> {
         this.LOGGER.log(`Searching for profiles and links with keyword: ${keyword}`);
 
-        const profilesQuery = this.profileSchema.find({
+        const results = await this.linkSchema.find({
             $or: [
-                { username: { $regex: keyword, $options: 'i' } },
-                { fullName: { $regex: keyword, $options: 'i' } },
-                { biography: { $regex: keyword, $options: 'i' } },
+                {
+                    $or: [
+                        { link: { $regex: keyword, $options: 'i' } },
+                        { alias: { $regex: keyword, $options: 'i' } }
+                    ],
+                },
+                {
+                    profile: {
+                        $in: await this.profileSchema.find({
+                            $or: [
+                                { username: { $regex: keyword, $options: 'i' } },
+                                { fullName: { $regex: keyword, $options: 'i' } },
+                                { biography: { $regex: keyword, $options: 'i' } }
+                            ]
+                        }).distinct('_id')
+                    }
+                }
             ]
+        }).populate({
+            path: 'profile',
         });
 
-        const linksQuery = this.linkSchema.find({
-            $or: [
-                { alias: { $regex: keyword, $options: 'i' } },
-                { link: { $regex: keyword, $options: 'i' } },
-            ]
+        const profiles: PublicProfile[] = [];
+
+        results.forEach((link) => {
+            if (link.profile) {
+                const { username, fullName, biography } = link.profile;
+                profiles.push({
+                    username,
+                    fullName,
+                    biography,
+                    links: [{ link: link.link, alias: link.alias }]
+                });
+            }
         });
 
-        const [profiles, links] = await Promise.all([profilesQuery, linksQuery]);
-
-        const publicProfiles: PublicProfile[] = [];
-
-        for (let i = 0; i < profiles.length; i++) {
-            const foundProfile = profiles[i];
-            const relatedLinks = await this.linkSchema.find({ profile: foundProfile._id });
-
-            const publicProfile: PublicProfile = {
-                username: foundProfile.username,
-                fullName: foundProfile.fullName,
-                biography: foundProfile.biography,
-                links: relatedLinks.map(l => ({ alias: l.alias, link: l.link })),
-            }
-
-            publicProfiles.push(publicProfile);
-        }
-
-        for (let i = 0; i < links.length; i++) {
-            const relatedProfile = await this.profileSchema.findOne({ _id: links[i].profile });
-            const relatedLinks = this.linkSchema.find({ profile: relatedProfile._id });
-
-            const publicProfile: PublicProfile = {
-                username: relatedProfile.username,
-                fullName: relatedProfile.fullName,
-                biography: relatedProfile.biography,
-                links: (await relatedLinks).map(l => ({ alias: l.alias, link: l.link })),
-            }
-
-            publicProfiles.push(publicProfile);
-        }
-
-        // Remove duplicate profiles
-        const uniqueProfiles = publicProfiles.reduce((unique, profile) => {
-            const existingProfile = unique.find(p => p.username === profile.username);
-            if (!existingProfile) {
-                unique.push(profile);
-            }
-            return unique;
-        }, []);
+        const uniqueProfiles = profiles.filter((profile, index, self) =>
+            index === self.findIndex((t) => (
+                t.username === profile.username
+            ))
+        );
 
         return uniqueProfiles;
-
     }
 
     /**
