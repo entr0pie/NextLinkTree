@@ -7,6 +7,7 @@ import { PublicProfile } from '../dto/PublicProfile';
 import { DomainUsage } from '../dto/DomainUsage';
 import { Account } from 'src/schemas/account-schema/account-schema';
 import { ActiveUsersQuantity } from '../dto/ActiveUsersQuantity';
+import { ResumedPublicProfile } from '../dto/ResumedPublicProfile';
 
 /**
  * Service for the dashboard module.
@@ -96,7 +97,7 @@ export class DashboardService {
      * @param endDate date to end the search.
      * @returns a list of public profiles that match the keyword and dates.
      */
-    async searchWithDates(keyword: string, startDate: Date, endDate: Date): Promise<PublicProfile[]> {
+    async searchWithDates(keyword: string, startDate: Date, endDate: Date): Promise<ResumedPublicProfile[]> {
         const accounts = await this.accountSchema.find({
             createdAt: {
                 $gte: startDate,
@@ -113,24 +114,13 @@ export class DashboardService {
             ]
         });
 
-        const links = await this.linkSchema.find({
-            profile: { $in: profiles.map(profile => profile._id) },
-            $or: [
-                { link: { $regex: keyword, $options: 'i' } },
-                { alias: { $regex: keyword, $options: 'i' } }
-            ]
-        });
-
-        const publicProfiles: PublicProfile[] = [];
+        const publicProfiles: ResumedPublicProfile[] = [];
 
         profiles.forEach((profile) => {
-            const linksByProfile = links.filter(link => link.profile === profile);
-            const profileLinks = linksByProfile.map(link => ({ link: link.link, alias: link.alias }));
             publicProfiles.push({
                 username: profile.username,
                 fullName: profile.fullName,
                 biography: profile.biography,
-                links: profileLinks
             });
         });
 

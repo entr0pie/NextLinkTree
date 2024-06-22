@@ -4,6 +4,7 @@ import { DashboardService } from '../dashboard-service/dashboard.service';
 import { ActiveUsersQuantity } from '../dto/ActiveUsersQuantity';
 import { DomainUsage } from '../dto/DomainUsage';
 import { ApiTags } from '@nestjs/swagger';
+import { ResumedPublicProfile } from '../dto/ResumedPublicProfile';
 
 @ApiTags("Dashboard")
 @Controller('dashboard')
@@ -16,7 +17,7 @@ export class DashboardController {
     }
 
     @Get("search/dates")
-    async searchByDates(@Query("keyword") keyword: string, @Query("start") start: Date, @Query("end") end: Date): Promise<PublicProfile[]> {
+    async searchByDates(@Query("keyword") keyword: string, @Query("start") start: Date, @Query("end") end: Date): Promise<ResumedPublicProfile[]> {
         return this.dashboardService.searchWithDates(keyword, start, end);
     }
 
