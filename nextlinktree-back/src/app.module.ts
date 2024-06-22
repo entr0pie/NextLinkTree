@@ -7,7 +7,6 @@ import { SchemasModule } from './schemas/schemas.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PublicProfileModule } from './public-profile/public-profile.module';
 import { AccountModule } from './account/account.module';
-import { PublicProfileControllerController } from './public-profile/public-profile-controller/public-profile-controller.controller';
 
 @Module({
   imports: [ConfigModule.forRoot(), MongooseModule.forRootAsync({
@@ -18,7 +17,7 @@ import { PublicProfileControllerController } from './public-profile/public-profi
     }),
     inject: [ConfigService],
   }), SchemasModule, DashboardModule, PublicProfileModule, AccountModule],
-  controllers: [AppController, PublicProfileControllerController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule { }
