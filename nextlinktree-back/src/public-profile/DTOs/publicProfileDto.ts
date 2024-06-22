@@ -9,6 +9,6 @@ export type PublicProfileDTO = {
     links:
     {
         alias: string;
-        url: string;
+        link: string;
     }[]
 }

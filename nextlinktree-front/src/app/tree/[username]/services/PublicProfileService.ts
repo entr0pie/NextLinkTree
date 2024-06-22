@@ -1,33 +1,16 @@
+import axios from "axios";
+
 export interface PublicProfile {
   username: string;
-  imageURL: string;
-  description: string;
+  biography: string;
   links: PublicProfileLinks[];
 }
 
 export interface PublicProfileLinks {
-  name: string;
+  alias: string;
   link: string;
 }
 
-export function getPublicProfile(username: string): PublicProfile {
-  return {
-    username: username,
-    description: "Minha biografia",
-    imageURL: "https://github.com/shadcn.png",
-    links: [
-      {
-        name: "Instagram",
-        link: "https://instagram.com",
-      },
-      {
-        name: "Facebook",
-        link: "https://facebook.com",
-      },
-      {
-        name: "Whatsapp",
-        link: "https://web.whatsapp.com/",
-      },
-    ],
-  };
+export function getPublicProfile(username: string): Promise<PublicProfile> {
+  return axios.get<PublicProfile>(`http://localhost:8080/public-profile/${username}`).then((response) => response.data);
 }
