@@ -4,9 +4,7 @@ import { Model } from 'mongoose';
 import { Profile } from 'src/schemas/profile-schema/profile-schema';
 import { UpdatePrivateProfile } from '../DTO/UpdatePrivateProfileDTO';
 import { PrivateLinksDTO } from '../DTO/privateLinksDTO';
-import { Link, LinkSchema } from 'src/schemas/link-schema/link-schema';
-
-
+import { Link } from 'src/schemas/link-schema/link-schema';
 
 
 @Injectable()
@@ -17,8 +15,8 @@ export class PrivateProfileService {
         @InjectModel(Link.name) private linkSchema: Model<Link>,
     ) { }
 
-    async updateProfile(UpdatePrivateProfile: UpdatePrivateProfile): Promise<Profile> {
-        const profile = await this.profileSchema.findOne({username : UpdatePrivateProfile.username});
+    async updateProfile(id: string, UpdatePrivateProfile: UpdatePrivateProfile): Promise<Profile> {
+        const profile = await this.profileSchema.findOne({_id : id});
 
         if (!profile) { throw new Error('Profile not found'); }
 
