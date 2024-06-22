@@ -4,20 +4,29 @@
             "$oid": "60d5ecf5f8d2b903c8fa3b6b"
         },
         "email": "user1@example.com",
-        "password": "password123"
+        "password": "password123",
+        "createdAt": {
+            "$date": "2024-06-20T00:00:00.000Z"
+        }
     },
     {
         "_id": {
             "$oid": "60d5ecf5f8d2b903c8fa3b6c"
         },
         "email": "user2@example.com",
-        "password": "password456"
+        "password": "password456",
+        "createdAt": {
+            "$date": "2024-06-21T00:00:00.000Z"
+        }
     },
     {
         "_id": {
             "$oid": "60d5ecf5f8d2b903c8fa3b6d"
         },
         "email": "user3@example.com",
-        "password": "password789"
+        "password": "password789",
+        "createdAt": {
+            "$date": "2024-06-22T00:00:00.000Z"
+        }
     }
 ]

@@ -89,6 +89,61 @@ export class DashboardService {
     }
 
     /**
+     * Search for NextLinkTree users by keyword and dates.
+     * 
+     * @param keyword keyword for searching. 
+     * @param startDate date to start the search.
+     * @param endDate date to end the search.
+     * @returns a list of public profiles that match the keyword and dates.
+     */
+    async searchWithDates(keyword: string, startDate: Date, endDate: Date): Promise<PublicProfile[]> {
+        const accounts = await this.accountSchema.find({
+            createdAt: {
+                $gte: startDate,
+                $lte: endDate
+            }
+        });
+
+        const profiles = await this.profileSchema.find({
+            account: { $in: accounts.map(account => account._id) },
+            $or: [
+                { username: { $regex: keyword, $options: 'i' } },
+                { fullName: { $regex: keyword, $options: 'i' } },
+                { biography: { $regex: keyword, $options: 'i' } }
+            ]
+        });
+
+        const links = await this.linkSchema.find({
+            profile: { $in: profiles.map(profile => profile._id) },
+            $or: [
+                { link: { $regex: keyword, $options: 'i' } },
+                { alias: { $regex: keyword, $options: 'i' } }
+            ]
+        });
+
+        const publicProfiles: PublicProfile[] = [];
+
+        profiles.forEach((profile) => {
+            const linksByProfile = links.filter(link => link.profile === profile);
+            const profileLinks = linksByProfile.map(link => ({ link: link.link, alias: link.alias }));
+            publicProfiles.push({
+                username: profile.username,
+                fullName: profile.fullName,
+                biography: profile.biography,
+                links: profileLinks
+            });
+        });
+
+        const uniqueProfiles = publicProfiles.filter((profile, index, self) => {
+            return index === self.findIndex((t) => (
+                t.username === profile.username
+            ));
+        });
+
+        return uniqueProfiles;
+    }
+
+    /**
      * Get the quantity of active users.
      * 
      * @returns the quantity of active users.

@@ -11,6 +11,9 @@ export class Account {
 
     @Prop({ required: true })
     password: string;
+
+    @Prop({ required: true })
+    createdAt: Date;
 }
 
 export const AccountSchema = SchemaFactory.createForClass(Account);

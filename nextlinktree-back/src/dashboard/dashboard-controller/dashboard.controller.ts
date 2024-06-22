@@ -15,6 +15,12 @@ export class DashboardController {
         return this.dashboardService.search(keyword);
     }
 
+    @Get("search/dates")
+    async searchByDates(@Query("keyword") keyword: string, @Query("start") start: Date, @Query("end") end: Date): Promise<PublicProfile[]> {
+        return this.dashboardService.searchWithDates(keyword, start, end);
+    }
+
+
     @Get("active-users")
     async getActiveUsersQuantity(): Promise<ActiveUsersQuantity> {
         return this.dashboardService.getActiveUsersQuantity();
