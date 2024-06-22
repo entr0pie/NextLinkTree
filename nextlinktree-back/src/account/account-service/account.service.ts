@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Account } from 'src/schemas/account-schema/account-schema';
+import { AccountRegister } from '../dto/AccountRegister'; // À Corrigir
+
 //import { AccountRegister } from '../dto/AccountRegister';
 
 
@@ -11,7 +13,7 @@ export class AccountService {
         @InjectModel(Account.name) private accountSchema: Model<Account>,
     ) { }
 
-    async register(email: string, password: string): Promise<Account> {
+    async register(email: string, password: string): Promise<AccountRegister> {
         try {
             // Verifica se o email e a senha são válidos
             if (!email || !password) {
