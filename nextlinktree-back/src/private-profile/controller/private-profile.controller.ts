@@ -1,4 +1,4 @@
-import { Body, Controller, Put } from '@nestjs/common';
+import { Body, Controller, Param, Put } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { PrivateProfileService } from '../service/private-profile.service';
 import { Profile } from 'src/schemas/profile-schema/profile-schema';
@@ -14,10 +14,10 @@ export class PrivateProfileController {
         private readonly privateProfileService: PrivateProfileService,
     ) {}
 
-    @Put('update-profile')
-    async updateProfile(@Body() updatePrivateProfile: UpdatePrivateProfile): Promise<Profile> {
+    @Put('update-profile/id')
+    async updateProfile(@Param('id') id: string,  @Body() updatePrivateProfile: UpdatePrivateProfile): Promise<Profile> {
 
-        return this.privateProfileService.updateProfile(updatePrivateProfile);
+        return this.privateProfileService.updateProfile(id, updatePrivateProfile);
     }
 
     @Put('update-link')
