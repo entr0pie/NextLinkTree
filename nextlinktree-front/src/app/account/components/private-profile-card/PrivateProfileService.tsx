@@ -7,3 +7,8 @@ export function updateLink(oldAlias: string, alias: string, link: string) {
         link
     }).then((r) => r.data);
 }
+
+export async function deleteLink(alias: string) {
+    return axios.delete(`http://localhost:8080/private-profile/delete-link/${alias}`)
+        .then((r) => r.data);
+}

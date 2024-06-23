@@ -2,8 +2,14 @@ import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 import { TrashIcon } from "@radix-ui/react-icons";
 import clsx from "clsx";
+import { DeleteLinkForm } from "./DeleteLinkForm";
 
-export function DeleteLinkButton() {
+type Props = {
+    alias: string;
+    link: string;
+}
+
+export function DeleteLinkButton({ alias, link }: Props) {
     return (
         <Drawer>
             <div className="">
@@ -23,6 +29,7 @@ export function DeleteLinkButton() {
                     <DrawerTitle>Update your link.</DrawerTitle>
                     <DrawerDescription>Change the way the world see you</DrawerDescription>
                 </DrawerHeader>
+                <DeleteLinkForm alias={alias} link={link} />
                 <DrawerFooter>
                 </DrawerFooter>
             </DrawerContent>

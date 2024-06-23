@@ -18,7 +18,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useLinksStore } from "../LinksStore";
 import { DrawerClose } from "@/components/ui/drawer";
-import { updateLink as updateLinkApi } from "../PrivateProfileService";
+import { updateLink as updateLinkApi } from "../../PrivateProfileService";
 
 export const editLinkSchema = z.object({
     alias: z

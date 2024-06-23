@@ -15,7 +15,7 @@ export function EditableProfileLink({ alias, link, key }: Props) {
                 <span>{alias}</span>
             </Card>
             <EditLinkButton alias={alias} link={link} />
-            <DeleteLinkButton />
+            <DeleteLinkButton alias={alias} link={link} />
         </div>
     )
 }

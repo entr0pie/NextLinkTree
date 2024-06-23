@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Param, Put } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { PrivateProfileService } from '../service/private-profile.service';
 import { Profile } from 'src/schemas/profile-schema/profile-schema';
@@ -22,6 +22,11 @@ export class PrivateProfileController {
     @Put('update-link')
     async updateLinks(@Body() privateLinksDTO: PrivateLinksDTO): Promise<Link> {
         return this.privateProfileService.updateLinks(privateLinksDTO);
+    }
+
+    @Delete('delete-link/:alias')
+    async deleteLink(@Param('alias') alias: string): Promise<Link> {
+        return this.privateProfileService.deleteLink(alias);
     }
 
 }

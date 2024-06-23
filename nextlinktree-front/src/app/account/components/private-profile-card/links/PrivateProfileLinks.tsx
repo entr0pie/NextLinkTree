@@ -4,10 +4,6 @@ import { PublicProfile } from "@/app/tree/[username]/services/PublicProfileServi
 import { EditableProfileLink } from "./edit/EditableProfileLink";
 import { useLinksStore } from "./LinksStore";
 
-type Props = {
-    profile: PublicProfile;
-}
-
 export function PrivateProfileLinks() {
 
     const [links] = useLinksStore((state) => [state.links]);

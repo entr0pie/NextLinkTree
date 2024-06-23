@@ -16,23 +16,23 @@ export class PrivateProfileService {
     ) { }
 
     async updateProfile(id: string, UpdatePrivateProfile: UpdatePrivateProfile): Promise<Profile> {
-        const profile = await this.profileSchema.findOne({_id : id});
+        const profile = await this.profileSchema.findOne({ _id: id });
 
         if (!profile) { throw new Error('Profile not found'); }
 
-        let updateData : any = {}
+        let updateData: any = {}
 
-        if(UpdatePrivateProfile.username) {
+        if (UpdatePrivateProfile.username) {
             updateData.username = UpdatePrivateProfile.username;
         }
-        if(UpdatePrivateProfile.fullName) {
+        if (UpdatePrivateProfile.fullName) {
             updateData.fullName = UpdatePrivateProfile.fullName;
         }
-        if(UpdatePrivateProfile.biography) {
+        if (UpdatePrivateProfile.biography) {
             updateData.biography = UpdatePrivateProfile.biography;
         }
-        
-        await this.profileSchema.updateOne({_id : profile.id}, {$set: updateData});
+
+        await this.profileSchema.updateOne({ _id: profile.id }, { $set: updateData });
 
         const updatedProfile = await this.profileSchema.findById(profile._id);
 
@@ -40,20 +40,30 @@ export class PrivateProfileService {
     }
 
     async updateLinks(PrivateLinksDTO: PrivateLinksDTO): Promise<Link> {
-        const link = await this.linkSchema.findOne({alias : PrivateLinksDTO.oldAlias});
+        const link = await this.linkSchema.findOne({ alias: PrivateLinksDTO.oldAlias });
 
         if (!link) { throw new Error('link not found'); }
 
-        let updateData : any = {}
+        let updateData: any = {}
 
-        if(PrivateLinksDTO.alias) { updateData.alias = PrivateLinksDTO.alias }
-        if(PrivateLinksDTO.link) { updateData.link  = PrivateLinksDTO.link }
+        if (PrivateLinksDTO.alias) { updateData.alias = PrivateLinksDTO.alias }
+        if (PrivateLinksDTO.link) { updateData.link = PrivateLinksDTO.link }
 
-        await this.linkSchema.updateOne({_id: link.id}, {$set: updateData});
+        await this.linkSchema.updateOne({ _id: link.id }, { $set: updateData });
 
         const updatedLinks = await this.linkSchema.findById(link.id);
 
         return updatedLinks;
+    }
+
+    async deleteLink(alias: string): Promise<Link> {
+        const link = await this.linkSchema.findOne({ alias: alias });
+
+        if (!link) { throw new Error('link not found'); }
+
+        await this.linkSchema.deleteOne({ alias: alias });
+
+        return link;
     }
 
 }

@@ -6,6 +6,7 @@ export interface LinksState {
     addLink: (alias: string, link: string) => void;
     updateLink: (oldLink: string, alias: string, link: string) => void;
     removeLink: (link: string) => void;
+    setLinks: (links: PublicProfileLinks[]) => void;
     getLinks: () => PublicProfileLinks[];
     getLinkByURL: (url: string) => PublicProfileLinks | undefined;
 }
@@ -15,6 +16,7 @@ export const useLinksStore = create<LinksState>((set, get) => ({
     addLink: (alias: string, link: string) => set({ links: [...get().links, { alias, link }] }),
     updateLink: (oldLink: string, alias: string, link: string) => set({ links: get().links.map((l) => l.link === oldLink ? { alias, link } : l) }),
     removeLink: (link: string) => set({ links: get().links.filter((l) => l.link !== link) }),
+    setLinks: (links: PublicProfileLinks[]) => set({ links }),
     getLinks: () => get().links,
     getLinkByURL: (url: string) => get().links.find((l) => l.link === url),
 }));
