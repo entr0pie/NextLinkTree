@@ -2,34 +2,60 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Account } from 'src/schemas/account-schema/account-schema';
-import { AccountRegister } from '../dto/AccountRegister'; // À Corrigir
-
-//import { AccountRegister } from '../dto/AccountRegister';
-
+import { AccountRegister } from '../dto/AccountRegister';
+import * as bcrypt from 'bcrypt';
+import { AuthService } from 'src/auth/auth-service/auth-service.service';
 
 @Injectable()
 export class AccountService {
     constructor(
         @InjectModel(Account.name) private accountSchema: Model<Account>,
+        private readonly authService: AuthService,
     ) { }
 
     async register(email: string, password: string): Promise<AccountRegister> {
         try {
-            // Verifica se o email e a senha são válidos
             if (!email || !password) {
                 throw new Error('Email e senha são obrigatórios.');
             }
 
-            // Cria uma nova conta
+            const saltRounds = 10;
+            const salt = await bcrypt.genSalt(saltRounds);
+            const hashedPassword = await bcrypt.hash(password, salt);
+            const createdAt = new Date();
+
             const newAccount = await this.accountSchema.create({
                 email,
-                password,
+                password: hashedPassword,
+                createdAt,
             });
 
             return newAccount;
         } catch (error) {
-            // Trate erros aqui (por exemplo, log ou lance exceções personalizadas)
             throw new Error('Erro ao criar conta: ' + error.message);
+        }
+    }
+
+    async login(email: string, password: string): Promise<{ access_token: string }> {
+        try {
+            if (!email || !password) {
+                throw new Error('Email e senha são obrigatórios.');
+            }
+
+            const account = await this.accountSchema.findOne({ email });
+            if (!account) {
+                throw new Error('Conta não encontrada.');
+            }
+
+            const isPasswordValid = await bcrypt.compare(password, account.password);
+            if (!isPasswordValid) {
+                throw new Error('Senha inválida.');
+            }
+
+            const token = await this.authService.generateToken(account);
+            return { access_token: token };
+        } catch (error) {
+            throw new Error('Erro ao efetuar o login: ' + error.message);
         }
     }
 }

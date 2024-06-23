@@ -8,6 +8,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { PublicProfileModule } from './public-profile/public-profile.module';
 import { AccountModule } from './account/account.module';
 import { PrivateProfileModule } from './private-profile/private-profile.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [ConfigModule.forRoot(), MongooseModule.forRootAsync({
@@ -17,7 +18,7 @@ import { PrivateProfileModule } from './private-profile/private-profile.module';
       autoCreate: true,
     }),
     inject: [ConfigService],
-  }), SchemasModule, DashboardModule, PublicProfileModule, AccountModule, PrivateProfileModule],
+  }), SchemasModule, DashboardModule, PublicProfileModule, AccountModule, PrivateProfileModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
