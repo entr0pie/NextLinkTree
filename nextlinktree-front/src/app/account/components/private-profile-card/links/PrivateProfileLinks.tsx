@@ -1,15 +1,20 @@
+"use client";
 
 import { PublicProfile } from "@/app/tree/[username]/services/PublicProfileService";
 import { EditableProfileLink } from "./edit/EditableProfileLink";
+import { useLinksStore } from "./LinksStore";
 
 type Props = {
     profile: PublicProfile;
 }
 
-export function PrivateProfileLinks({ profile }: Props) {
+export function PrivateProfileLinks() {
+
+    const [links] = useLinksStore((state) => [state.links]);
+
     return (
         <div className="flex flex-col space-y-2">
-            {profile.links.map((profileLink, index) => (
+            {links.map((profileLink, index) => (
                 EditableProfileLink({ alias: profileLink.alias, link: profileLink.link, key: index })
             ))}
         </div>

@@ -14,7 +14,7 @@ export function EditableProfileLink({ alias, link, key }: Props) {
             <Card key={key} className="w-[300px] text-center p-2 cursor-pointer">
                 <span>{alias}</span>
             </Card>
-            <EditLinkButton />
+            <EditLinkButton alias={alias} link={link} />
             <DeleteLinkButton />
         </div>
     )

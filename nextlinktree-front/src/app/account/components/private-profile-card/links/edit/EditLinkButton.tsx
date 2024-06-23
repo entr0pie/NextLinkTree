@@ -1,9 +1,17 @@
+"use client";
+
 import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 import { Pencil1Icon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
+import { EditLinkForm } from "./EditLinkForm";
 
-export function EditLinkButton() {
+type Props = {
+    alias: string;
+    link: string;
+}
+
+export function EditLinkButton({ alias, link }: Props) {
     return (
         <Drawer>
             <div className="h1/2">
@@ -21,6 +29,7 @@ export function EditLinkButton() {
                     <DrawerTitle>Update your link.</DrawerTitle>
                     <DrawerDescription>Change the way the world see you</DrawerDescription>
                 </DrawerHeader>
+                <EditLinkForm alias={alias} link={link} onSubmit={(e) => { console.log(e) }} />
                 <DrawerFooter>
                 </DrawerFooter>
             </DrawerContent>

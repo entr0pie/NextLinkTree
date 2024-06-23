@@ -16,7 +16,7 @@ export function PrivateProfileCard({ profile }: Props) {
                         <PrivateProfileHeader profile={profile} />
                     </CardContent>
                     <CardContent className="flex flex-col gap-2">
-                        <PrivateProfileLinks profile={profile} />
+                        <PrivateProfileLinks />
                     </CardContent>
                 </div>
             </Card>
