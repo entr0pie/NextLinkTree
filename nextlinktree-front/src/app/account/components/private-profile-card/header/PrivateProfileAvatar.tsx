@@ -1,6 +1,5 @@
 "use client";
 
-import { PublicProfile } from "@/app/tree/[username]/services/PublicProfileService"
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { EditPrivateProfileButton } from "./EditPrivateProfileButton";
 import { useProfileStore } from "../ProfileStore";

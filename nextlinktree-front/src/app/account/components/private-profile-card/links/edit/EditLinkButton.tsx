@@ -1,26 +1,26 @@
-import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 import { Pencil1Icon } from "@radix-ui/react-icons";
-import { UpdateProfile } from "./UpdateProfile";
+import { Button } from "@/components/ui/button";
+import clsx from "clsx";
 
-
-export function EditPrivateProfileButton() {
-
+export function EditLinkButton() {
     return (
         <Drawer>
-            <div className="absolute right-0 bottom-0 ">
+            <div className="h1/2">
                 <DrawerTrigger asChild>
-                    <Button className="h-8 w-8 rounded-full" variant="outline" size="icon">
+                    <Button className={clsx(
+                        "h-8 w-8 rounded-full",
+                        "hover:bg-primary",
+                    )} variant="outline" size="icon">
                         <Pencil1Icon className="h-4 w-4" />
                     </Button>
                 </DrawerTrigger>
             </div>
             <DrawerContent>
                 <DrawerHeader>
-                    <DrawerTitle>Update your profile</DrawerTitle>
-                    <DrawerDescription>Got bored? Let&apos;s change up some things.</DrawerDescription>
+                    <DrawerTitle>Update your link.</DrawerTitle>
+                    <DrawerDescription>Change the way the world see you</DrawerDescription>
                 </DrawerHeader>
-                <UpdateProfile />
                 <DrawerFooter>
                 </DrawerFooter>
             </DrawerContent>
