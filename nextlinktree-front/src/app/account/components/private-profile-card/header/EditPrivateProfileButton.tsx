@@ -1,19 +1,20 @@
-"use client"
-
+import { PublicProfile } from "@/app/tree/[username]/services/PublicProfileService";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
-import { PersonIcon } from "@radix-ui/react-icons";
-import UpdateProfileForm from "./UpdateProfileForm";
+import { Pencil1Icon } from "@radix-ui/react-icons";
+import UpdateProfileForm from "../../settings-section/UpdateProfileForm";
+import { UpdateProfile } from "./UpdateProfile";
+import { useProfileStore } from "../ProfileStore";
 
-// https://ui.shadcn.com/docs/components/drawer
-// https://ui.shadcn.com/docs/components/button
-export default function SettingsSection() {
+
+export function EditPrivateProfileButton() {
+
     return (
         <Drawer>
-            <div className="absolute left-4 bottom-4">
+            <div className="absolute right-0 bottom-0 ">
                 <DrawerTrigger asChild>
-                    <Button className="h-16 w-16 rounded-xl sticky" variant="outline" size="icon">
-                        <PersonIcon className="h-8 w-8" />
+                    <Button className="h-8 w-8 rounded-full" variant="outline" size="icon">
+                        <Pencil1Icon className="h-4 w-4" />
                     </Button>
                 </DrawerTrigger>
             </div>
@@ -22,7 +23,7 @@ export default function SettingsSection() {
                     <DrawerTitle>Update your profile</DrawerTitle>
                     <DrawerDescription>Got bored? Let&apos;s change up some things.</DrawerDescription>
                 </DrawerHeader>
-                <UpdateProfileForm></UpdateProfileForm>
+                <UpdateProfile />
                 <DrawerFooter>
                 </DrawerFooter>
             </DrawerContent>

@@ -39,7 +39,7 @@ export class PublicProfileService {
         return {
             username: profile.username,
             biography: profile.biography,
-            links: links
+            links: links.map(l => ({ alias: l.alias, link: l.link }))
         }
 
     }

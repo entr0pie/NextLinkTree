@@ -12,18 +12,16 @@ export class PrivateProfileController {
 
     constructor(
         private readonly privateProfileService: PrivateProfileService,
-    ) {}
+    ) { }
 
     @Put('update-profile/id')
-    async updateProfile(@Param('id') id: string,  @Body() updatePrivateProfile: UpdatePrivateProfile): Promise<Profile> {
-
+    async updateProfile(@Param('id') id: string, @Body() updatePrivateProfile: UpdatePrivateProfile): Promise<Profile> {
         return this.privateProfileService.updateProfile(id, updatePrivateProfile);
     }
 
     @Put('update-link')
     async updateLinks(@Body() privateLinksDTO: PrivateLinksDTO): Promise<Link> {
-
         return this.privateProfileService.updateLinks(privateLinksDTO);
-    } 
+    }
 
 }

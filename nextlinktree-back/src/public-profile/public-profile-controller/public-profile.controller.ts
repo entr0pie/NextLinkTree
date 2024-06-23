@@ -1,9 +1,7 @@
 import { Body, Controller, Param, Put, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { Profile } from 'src/schemas/profile-schema/profile-schema';
-import { Link, LinkSchema } from 'src/schemas/link-schema/link-schema';
 import { publicProfile } from '../DTOs/publicProfileDto';
-import { publicLinksDTO } from '../DTOs/publicLinksDto';
 import { PublicProfileService } from '../public-profile-service/public-profile-service';
 
 @ApiTags('Public Profile')
