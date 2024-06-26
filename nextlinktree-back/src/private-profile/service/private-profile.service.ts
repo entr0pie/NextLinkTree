@@ -5,6 +5,7 @@ import { Profile } from 'src/schemas/profile-schema/profile-schema';
 import { UpdatePrivateProfile } from '../DTO/UpdatePrivateProfileDTO';
 import { PrivateLinksDTO } from '../DTO/privateLinksDTO';
 import { Link } from 'src/schemas/link-schema/link-schema';
+import { CreateLinkDTO } from '../DTO/CreateLinkDTO';
 
 
 @Injectable()
@@ -14,6 +15,11 @@ export class PrivateProfileService {
         @InjectModel(Profile.name) private profileSchema: Model<Profile>,
         @InjectModel(Link.name) private linkSchema: Model<Link>,
     ) { }
+
+    async createLink(link: CreateLinkDTO): Promise<Link> {
+        const newLink = new this.linkSchema(link);
+        return await newLink.save();
+    }
 
     async updateProfile(id: string, UpdatePrivateProfile: UpdatePrivateProfile): Promise<Profile> {
         const profile = await this.profileSchema.findOne({ _id: id });

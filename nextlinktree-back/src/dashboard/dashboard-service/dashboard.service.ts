@@ -140,7 +140,7 @@ export class DashboardService {
      */
     async getActiveUsersQuantity(): Promise<ActiveUsersQuantity> {
         this.LOGGER.log("Getting the quantity of active users");
-        return this.accountSchema.countDocuments().then((quantity) => ({ quantity }));
+        return this.accountSchema.countDocuments().then((quantity) => ({ quantity: quantity }));
     }
 
     /**
@@ -150,6 +150,7 @@ export class DashboardService {
      */
     async getMostUsedDomains(): Promise<DomainUsage[]> {
         this.LOGGER.log("Getting the most used domains");
+        // Busca por todos os links da base
         const allLinks = this.linkSchema.find();
 
         async function buildMostUsedDomains(links: Link[]): Promise<DomainUsage[]> {
